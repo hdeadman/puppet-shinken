@@ -36,14 +36,14 @@
 # Copyright 2015 Your name here, unless otherwise noted.
 #
 class shinken (
-  $ensure      = 'present',
-  $user        = 'shinken',
-  $group       = 'shinken',
-  $modules     = [],
-  $conf_dir    = '/etc/shinken',
-  $modules_dir = '/etc/shinken/modules',
-  $daemons_dir = '/etc/shinken/daemons',
-) {
+  $ensure      = $shinken::params::ensure,
+  $user        = $shinken::params::user,
+  $group       = $shinken::params::group,
+  $modules     = $shinken::params::modules,
+  $conf_dir    = $shinken::params::conf_dir,
+  $modules_dir = $shinken::params::modules_dir,
+  $daemons_dir = $shinken::params::daemons_dir,
+) inherits shinken::params {
 
   validate_string($user)
   validate_string($group)
