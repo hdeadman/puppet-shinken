@@ -5,7 +5,7 @@ define shinken::module (
   if ($ensure in ['present', true]) {
     exec{"install_${mod_name}":
       command => "/usr/bin/shinken install ${mod_name}",
-      unless  => "/usr/bin/shinken inventory | grep ${mod_name} 2>/dev/null",
+      unless  => "/usr/bin/shinken inventory | grep \"^${mod_name}$\" 2>/dev/null",
     }
   }
 }
