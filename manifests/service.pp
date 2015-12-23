@@ -8,9 +8,11 @@ class shinken::service (
   }
   service{ 'shinken':
     ensure     => $service,
+    provider   => 'init',
     enable     => $service,
-    hasrestart => $service,
-    hasstatus  => $service,
+    hasrestart => true,
+    hasstatus  => true,
+    path       => ['/etc/init.d'],
   }
 
 }
